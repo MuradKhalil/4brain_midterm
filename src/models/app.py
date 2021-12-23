@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from typing import List
 from PIL import Image
 import io
+import uvicorn
 
 class Prediction(BaseModel):
   filename: str
@@ -53,4 +54,3 @@ async def prediction_route(file: UploadFile = File(...)):
       'prediction': prediction.tolist(),
       'likely_class': likely_class
     }
-
